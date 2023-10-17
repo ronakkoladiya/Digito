@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* $(document).ready(function() {
+    var years = ["2000", "2004", "2008", "2012", "2016"];
+    var currentIndex = 0;
+    var totalSlides = $(".slide").length;
+  
+    function showSlide(index) {
+      $(".slide").hide();
+      $(".yearSlide").show();
+  
+      $(".slide").eq(index).show();
+      $(".yearSlide").eq(index).show();
+    }
+  
+    $("#downArrow").click(function() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateYear(currentIndex);
+      showSlide(currentIndex);
+    });
+  
+    $("#upArrow").click(function() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateYear(currentIndex);
+      showSlide(currentIndex);
+    });
+  
+    function updateYear(index) {
+      var year = years[index];
+      $(".yearSlide#timelineYear").text(year);
+    }
+  
+    // Initialize by showing the first slide and year
+    showSlide(currentIndex);
+    updateYear(currentIndex);
+  }); */
+

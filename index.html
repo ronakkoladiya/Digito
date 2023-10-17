@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="./assets/output.css" rel="stylesheet"  type="text/css"/>
+        <link href="./input.css" rel="stylesheet"/>
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://unpkg.com/flickity@2.3.0/dist/flickity.pkgd.min.js"></script>
+        <link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css "/>
+        <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+        <!--used https://animate.style/ for animation-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <!--owl carousel-->
+        <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+        <script src="owlcarousel/owl.carousel.min.js"></script>
+    </head>
+
+    <body>
+        <style>
+            html{
+                scroll-behavior: smooth;
+            }
+            .main-heading{
+                font-family: 'Satoshi', sans-serif;
+                font-weight:900;
+                color:#1C1C1C
+            }
+            .sub-heading{
+                font-family: 'Satoshi', sans-serif;
+                font-weight:400;
+                font-size:18px;
+                line-height:26px;
+                color:#1C1C1CB8;
+            }
+            .main-title{
+                font-family: 'Satoshi', sans-serif;
+                font-weight:900;
+                font-size:36px;
+                line-height:48.6px;
+                color:#1C1C1C
+            }
+            .satoshi-font{
+                font-family: 'Satoshi', sans-serif;
+            }
+            .range-slider .input-range {
+                -webkit-appearance: none;
+                width: 2px;
+                height: 500px;
+                border-radius: 5px;
+                background: #ccc;
+                outline: none;
+                writing-mode: bt-lr;
+                -webkit-appearance: slider-vertical;
+            }
+            .icon-bag {
+                background-color: #f5f5f5;
+                height: 40px;
+                width: 40px;
+                padding: 12px;
+                border-radius: 20px;
+                color: #0055ff;
+            }
+            .about-underline {
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .accordion {
+                width: 90%;
+                max-width: 1000px;
+                margin: 1.3rem auto;
+            }
+
+            .accordion-item {
+                background-color: #fafafc;
+                color: #111;
+                margin: 1rem 0;
+                border-radius: 0.5rem;
+            }
+
+            .accordion-item-header {
+                padding: 0.5rem 4rem 0.5rem 1rem;
+                min-height: 3.5rem;
+                line-height: 27px;
+                display: flex;
+                align-items: center;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .accordion-item-header::after {
+                content: "\002B";
+                font-size: 1.6rem;
+                position: absolute;
+                right: 1rem;
+                background-color: #0055ff;
+                color: white;
+                border-radius: 100%;
+                width: 28px;
+                height: 28px;
+                line-height: 25px;
+                text-align: center;
+                padding: 2px;
+            }
+
+            .accordion-item-header.active::after {
+                content: "\2212";
+            }
+
+            .accordion-item-body {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+            }
+
+            .accordion-item-body-content {
+                padding: 1rem;
+                border-image: linear-gradient(
+                        to right,
+                        transparent,
+                        #34495e,
+                        transparent
+                ) 1;
+            }
+            .backgroundimg {
+                clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+            }
+            .activeUl {
+                color: blue;
+                display: block;
+            }
+            #dropdownNavbar {
+                position: absolute;
+                inset: 0px auto auto 0px;
+                margin: 0px;
+                transform: translate(32px, 172px)
+            }
+            label {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+            }
+            ::-moz-range-track {
+                background: #ccc;
+                border: 0;
+            }
+
+            input::-moz-focus-inner {
+                border: 0;
+            }
+
+            @media (max-width: 768px) {
+                html {font-size: 14px;}
+            }
+            @media (max-width: 767px) {
+                html {font-size: 14px;}
+                .backgroundimg {
+                    clip-path: none;
+                }
+            }
+            .flip-container {
+                perspective: 1000;
+            }
+
+            .flip-container:hover .flipper, .flip-container.hover .flipper {
+                transform: rotateY(180deg);
+            }
+
+            .flip-container, .front, .back {
+                width: 134px;
+                height: 137px;
+            }
+
+            .flipper {
+                transition: 0.6s;
+                transform-style: preserve-3d;
+                position: relative;
+            }
+
+            .front, .back {
+                backface-visibility: hidden;
+                position: absolute;
+                border-radius: 32px;
+            }
+
+            .front svg, .back svg{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .front {
+                z-index: 2;
+                transform: rotateY(0deg);
+            }
+
+            .back {
+                transform: rotateY(180deg);
+            }
+
+            #faqs .accordion-item .active{
+                color: #0055ff;
+            }
+        </style>
+        <div>
+            <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-gray-200 dark:border-gray-600">
+            <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto py-[26px] md:py-[23px] px-[16px]">
+                <a href="" class="flex items-center">
+                    <img src="assets/Group.png" class="h-[48px] W-[41.57px] mr-2"/>
+                    <span class="text-2xl font-bold">DIGITO</span>
+                </a>
+                <div class="flex md:order-2 items-center">
+                    <button type="button"
+                            class="satoshi-font text-white text-[10px] w-[90px] h-[35px] md:h-[54px] md:w-[147px] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full md:text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Install Theme
+                    </button>
+                    <button
+                            data-collapse-toggle="navbar-sticky"
+                            type="button"
+                            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                            aria-controls="navbar-sticky"
+                            aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg
+                            class="w-5 h-5"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 17 14">
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M1 1h15M1 7h15M1 13h15"
+                                />
+                        </svg>
+                    </button>
+                </div>
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                    <ul class="satoshi-font flex navbar-ul nav-tabs flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <li>
+                            <a href="#"
+                                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white
+                                dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                                aria-current="page">Home</a>
+                        </li>
+                        <li>
+                            <a href="#about"
+                                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white
+                                dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
+                        </li>
+                            <div id="dropdownNavbar"
+                                    class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#services"
+                               class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white
+                               dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                        </li>
+                        <li class="active">
+                            <a href="#history"
+                               class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white
+                               dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">History</a>
+                        </li>
+                        <li>
+                            <a href="#blog"
+                               class="block py-2 pl-3 pr-4    text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white
+                               dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#faqs"
+                               class="block py-2 pl-3   pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white
+                               dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">FAQs</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </nav>
+        </div>
+
+        <!-- navbar side content -->
+        <div>
+            <section class="text-gray-700 body-font">
+            <div class="flex pt-[100px] md:flex-row pr-0 flex-col-reverse items-center">
+                <div class="md:pl-5 lg:flex-grow md:w-1/2 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center md:max-w-[50%] mx-auto">
+                    <h1 class="max-w-2xl xs:text-[26px] sm:text-[30px] lg:text-[36px] xl:text-[56px] md:text-[30px] mt-9 md:mt-0 mb-8 font-extrabold dark:text-white satoshi-font sm:text-[2rem] xs:text-4xl xl:leading-[68px] main-heading">
+                        Everything you <br/>
+                        need to run your <br/>
+                        online business
+                    </h1>
+                    <p class="sub-heading max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400 satoshi-font sm:text-[80%] px-5 md:px-0">
+                        Lorem ipsum dolor sit amet consectetur. eget gravida luctus <br/>
+                        lobortis ut tellus euismod porttitor
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="lg:flex">
+                            <button type="button"
+                                class="w-[120px] h-[44px] lg:w-[134px] lg:h-[54px] text-[14px] lg:text-[16px] text-white font-[600] lg:font-[700] leading-[21.6px] bg-blue-600 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300
+                                rounded-full px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 satoshi-font">
+                                Get Started
+                            </button>
+                            <button type="button"
+                                class="w-[140px] h-[44px] lg:w-[156px] lg:h-[54px] text-[14px] lg:text-[16px] leading-[21.6px] font-[600] lg:font-[700] py-2.5 px-5 text-blue-600 focus:outline-none bg-white rounded-full border
+                                 hover:bg-gray-100 text-center hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400
+                                dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 satoshi-font" style="border: #0055FF solid 1px">
+                                Discover More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:max-w-[46rem] lg:w-[852px] md:w-[55%] w-5/6 backgroundimg sm:w-[70.33%] ">
+                    <img class="object-cover object-center rounded md:rounded-none"
+                        alt="hero"
+                        width="852"
+                        height="700"
+                        src="assets/close-up-young-colleagues-having-meeting 3.png"
+                    />
+                </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- about us  -->
+        <div id="about">
+            <section class="grid bg-[#FAFAFC] py-[108px]">
+                <div class="grid justify-items-center mb-[60px]">
+                    <h1 class="main-title text-center pb-[10px]">
+                        About Us
+                    </h1>
+                    <div class="border-[3px] border-[#F0B80F] rounded-[24px] w-[84px] h-[6px] about-underline"></div>
+                </div>
+                <div class="grid max-w-screen-2xl px-4 mx-auto lg:gap-8 xl:gap-0">
+                    <div class="bg-[#FAFAFC] mx-auto lg:flex justify-start items-center gap-8 2xl:w-[1455px]
+                        2xl:h-[642px] 2xl:flex-row xl:w-[1255px] xl:h-[642px] lg:w-[925px] xl:flex-row lg:flex-col lg:h-[1103px] md:w-[740px] md:mx-auto md:h-[1101px] sm:w-[612px] sm:h-[1205px]">
+                        <div class="w-[592px] rounded-[12px] md:mx-auto sm:ml-3 xs:w-[91vw]">
+                            <video poster="assets/Frame%20180.png" controls="controls" class="cursor-pointer rounded-[12px] w-[100%]">
+                                <source src="assets/video%201.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+
+                        <div class="w-[592px] h-[642px] flex justify-start items-center gap-8 md:mx-auto md:mt-10 2xl:flex-row xl:flex-row lg:flex-row md:flex sm:flex-row sm:mt-10 xs:mt-[14%] sm:mx-auto xs:flex-col xs:w-[91vw] xs:h-[1161px]">
+                            <div class="w-[280px] h-[530px]">
+                                <div class="bg-white shadow w-[280px] h-[249px] rounded-[12px] p-[32px]">
+                                    <h1 class="w-[216px] h-[49px] text-[36px] leading-[48.6px] font-[700] text-[#0055FF] satoshi-font">
+                                        95%
+                                    </h1>
+                                    <h1 class="w-[216px] h-[32px] text-[24px] leading-[32.4px] font-[500] mt-[8px] text-[#1C1C1C] satoshi-font">
+                                        Successful Rate
+                                    </h1>
+                                    <p class="w-[216px] h-[72px] text-[16px] leading-[24px] font-[400] mt-[18px] text-[#808080] satoshi-font">
+                                        Lorem ipsum dolor sit amet <br/>
+                                        lorem at doller consectetur <br/>
+                                        Neque vitae.
+                                    </p>
+                                </div>
+                                <div class="bg-white shadow w-[280px] h-[249px] mt-[32px] rounded-[12px] p-[32px]">
+                                    <h1 class="w-[216px] h-[49px] text-[36px] leading-[48.6px] font-[700] text-[#0055FF] satoshi-font">
+                                        2.4m
+                                    </h1>
+                                    <h1 class="w-[216px] h-[32px] text-[24px] leading-[32.4px] font-[500] mt-[8px] text-[#1C1C1C] satoshi-font">
+                                        Followers
+                                    </h1>
+                                    <p class="w-[216px] h-[72px] text-[16px] leading-[24px] font-[400] mt-[18px] text-[#808080] satoshi-font">
+                                        Lorem ipsum dolor sit amet <br/>
+                                        lorem at doller consectetur <br/>
+                                        Neque vitae.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="w-[280px] h-[642px]">
+                                <div class="bg-white shadow w-[280px] h-[249px] rounded-[12px] p-[32px]">
+                                    <h1 class="w-[216px] h-[49px] text-[36px] leading-[48.6px] font-[700] text-[#0055FF] satoshi-font">
+                                        100k+
+                                    </h1>
+                                    <h1 class="w-[216px] h-[32px] text-[24px] leading-[32.4px] font-[500] mt-[8px] text-[#1C1C1C] satoshi-font">
+                                        New Customer
+                                    </h1>
+                                    <p class="w-[216px] h-[72px] text-[16px] leading-[24px] font-[400] mt-[18px] text-[#808080] satoshi-font">
+                                        Lorem ipsum dolor sit amet <br/>
+                                        lorem at doller consectetur <br/>
+                                        Neque vitae.
+                                    </p>
+                                </div>
+                                <div class="bg-white shadow w-[280px] h-[249px] mt-[32px] rounded-[12px] p-[32px]">
+                                    <h1 class="w-[216px] h-[49px] text-[36px] leading-[48.6px] font-[700] text-[#0055FF] satoshi-font">
+                                        #4
+                                    </h1>
+                                    <h1 class="w-[216px] h-[32px] text-[24px] leading-[32.4px] font-[500] mt-[8px] text-[#1C1C1C] satoshi-font">
+                                        Marketing Firm
+                                    </h1>
+                                    <p class="w-[216px] h-[72px] text-[16px] leading-[24px] font-[400] mt-[18px] text-[#808080] satoshi-font">
+                                        Lorem ipsum dolor sit amet <br/>
+                                        lorem at doller consectetur <br/>
+                                        Neque vitae.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- services -->
+        <div>
+            <section class="w-[100%] h-[100%] pt-[108px]" id="services">
+                <div class="grid max-w-screen-2xl px-4 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-0">
+                    <div class="grid justify-items-center mb-[60px]">
+                        <h1 class="main-title text-center pb-[10px]">
+                            Our Services
+                        </h1>
+                        <div class="border-[3px] border-[#F0B80F] rounded-[24px] w-[84px] h-[6px] about-underline"></div>
+                    </div>
+                    <div class="grid max-w-screen-2xl mx-auto lg:gap-8 xl:gap-0">
+                            <div class="grid items-center justify-center justify-around xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                                <div class="w-[100%] mb-8 lg:mb-0 px-[10px]">
+                                    <div class="flex justify-center flex-wrap xs:mt-[35px]">
+                                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                            <div class="flipper">
+                                                <div class="front bg-[#0055ff12]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                                        <path d="M26.9155 36.0209H11.0822C10.433 36.0209 9.89466 35.4825 9.89466 34.8334C9.89466 34.1842 10.433 33.6459 11.0822 33.6459H26.9155C27.5647 33.6459 28.103 34.1842 28.103 34.8334C28.103 35.4825 27.5647 36.0209 26.9155 36.0209Z" fill="#0055FF"/>
+                                                        <path d="M28.5012 3.16663H9.50117C6.002 3.16663 3.16784 6.00079 3.16784 9.49996V23.75C3.16784 27.2491 6.002 30.0833 9.50117 30.0833H28.5012C32.0003 30.0833 34.8345 27.2491 34.8345 23.75V9.49996C34.8345 6.00079 32.0003 3.16663 28.5012 3.16663ZM15.8187 11.59C16.7053 11.59 17.4178 12.3025 17.4178 13.1733C17.4178 14.0441 16.7053 14.7566 15.8345 14.7566C14.9637 14.7566 14.2512 14.0441 14.2512 13.1733C14.2512 12.3025 14.9478 11.59 15.8187 11.59ZM10.8312 11.59C11.7178 11.59 12.4303 12.3025 12.4303 13.1733C12.4303 14.0441 11.7178 14.7566 10.847 14.7566C9.97617 14.7566 9.26367 14.0441 9.26367 13.1733C9.26367 12.3025 9.9445 11.59 10.8312 11.59ZM27.3295 23.5283H10.7045C10.0395 23.5283 9.50117 22.99 9.50117 22.3408C9.50117 21.6916 10.0237 21.1533 10.6728 21.1533H27.3453C27.9945 21.1533 28.5328 21.6916 28.5328 22.3408C28.5328 22.99 27.9945 23.5283 27.3295 23.5283ZM27.3295 14.3608H21.5028C20.8537 14.3608 20.3153 13.8225 20.3153 13.1733C20.3153 12.5241 20.8537 11.9858 21.5028 11.9858H27.3295C27.9787 11.9858 28.517 12.5241 28.517 13.1733C28.517 13.8225 27.9945 14.3608 27.3295 14.3608Z" fill="#0055FF"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="back bg-[#0055ff12]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                                        <path d="M26.9155 36.0209H11.0822C10.433 36.0209 9.89466 35.4825 9.89466 34.8334C9.89466 34.1842 10.433 33.6459 11.0822 33.6459H26.9155C27.5647 33.6459 28.103 34.1842 28.103 34.8334C28.103 35.4825 27.5647 36.0209 26.9155 36.0209Z" fill="#0055FF"/>
+                                                        <path d="M28.5012 3.16663H9.50117C6.002 3.16663 3.16784 6.00079 3.16784 9.49996V23.75C3.16784 27.2491 6.002 30.0833 9.50117 30.0833H28.5012C32.0003 30.0833 34.8345 27.2491 34.8345 23.75V9.49996C34.8345 6.00079 32.0003 3.16663 28.5012 3.16663ZM15.8187 11.59C16.7053 11.59 17.4178 12.3025 17.4178 13.1733C17.4178 14.0441 16.7053 14.7566 15.8345 14.7566C14.9637 14.7566 14.2512 14.0441 14.2512 13.1733C14.2512 12.3025 14.9478 11.59 15.8187 11.59ZM10.8312 11.59C11.7178 11.59 12.4303 12.3025 12.4303 13.1733C12.4303 14.0441 11.7178 14.7566 10.847 14.7566C9.97617 14.7566 9.26367 14.0441 9.26367 13.1733C9.26367 12.3025 9.9445 11.59 10.8312 11.59ZM27.3295 23.5283H10.7045C10.0395 23.5283 9.50117 22.99 9.50117 22.3408C9.50117 21.6916 10.0237 21.1533 10.6728 21.1533H27.3453C27.9945 21.1533 28.5328 21.6916 28.5328 22.3408C28.5328 22.99 27.9945 23.5283 27.3295 23.5283ZM27.3295 14.3608H21.5028C20.8537 14.3608 20.3153 13.8225 20.3153 13.1733C20.3153 12.5241 20.8537 11.9858 21.5028 11.9858H27.3295C27.9787 11.9858 28.517 12.5241 28.517 13.1733C28.517 13.8225 27.9945 14.3608 27.3295 14.3608Z" fill="#0055FF"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-[22px] leading-[29.7px] font-[700] text-[#000000] satoshi-font mt-[24px]">
+                                                Web & Mobile
+                                            </div>
+                                            <p class="font-normal text-gray-400 font-[700] text-[16px] mt-[24px] leading-[26px]">
+                                                Lorem Ipsum is simply dummy text of the printing and
+                                                typesetting industry Lorem Ipsum has
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-[100%] mb-8 lg:mb-0 px-[10px]">
+                                    <div class="flex justify-center flex-wrap xs:mt-[35px]">
+                                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                            <div class="flipper">
+                                                <div class="front bg-[#F0B80F1A]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                                        <path d="M30.3043 12.2234C30.7635 13.4109 31.9035 14.25 33.2493 14.25C34.991 14.25 36.416 12.825 36.416 11.0834C36.416 9.34171 34.991 7.91671 33.2493 7.91671C31.9035 7.91671 30.7635 8.75587 30.3043 9.94337C30.2252 9.92754 30.1618 9.89587 30.0827 9.89587H23.7493V8.70837C23.7493 7.41004 22.6727 6.33337 21.3743 6.33337H16.6243C15.326 6.33337 14.2493 7.41004 14.2493 8.70837V9.89587H7.91601C7.83684 9.89587 7.77351 9.92754 7.69434 9.94337C7.23517 8.75587 6.09517 7.91671 4.74934 7.91671C3.00767 7.91671 1.58267 9.34171 1.58267 11.0834C1.58267 12.825 3.00767 14.25 4.74934 14.25C6.09517 14.25 7.23517 13.4109 7.69434 12.2234C7.77351 12.2392 7.83684 12.2709 7.91601 12.2709H11.9852C8.73934 14.6775 6.72851 18.6675 6.72851 22.9584C6.72851 23.2275 6.74434 23.4809 6.77601 23.75H6.33267C5.01851 23.75 3.95767 24.8109 3.95767 26.125V29.2917C3.95767 30.6059 5.01851 31.6667 6.33267 31.6667H9.49934C9.84767 31.6667 10.1643 31.5875 10.4652 31.445C11.2885 31.0967 11.8743 30.2575 11.8743 29.2917V26.125C11.8743 24.8109 10.8135 23.75 9.49934 23.75H9.13517C9.13517 23.7025 9.15101 23.655 9.15101 23.6075C9.11934 23.3859 9.11934 23.18 9.11934 22.9584C9.11934 19.0475 11.1302 15.4692 14.281 13.6167C14.3443 14.8359 15.3735 15.8334 16.6243 15.8334H21.3743C22.6252 15.8334 23.6543 14.8359 23.7335 13.6167C26.8843 15.4692 28.8952 19.0634 28.8952 22.9584C28.8952 23.18 28.8793 23.3859 28.8635 23.6075C28.8635 23.655 28.8793 23.7025 28.8793 23.75H28.4993C27.1852 23.75 26.1243 24.8109 26.1243 26.125V29.2917C26.1243 30.2575 26.7102 31.0967 27.5335 31.445C27.8343 31.5875 28.151 31.6667 28.4993 31.6667H31.666C32.9802 31.6667 34.041 30.6059 34.041 29.2917V26.125C34.041 24.8109 32.9802 23.75 31.666 23.75H31.2227C31.2543 23.4809 31.2702 23.2275 31.2702 22.9584C31.2702 18.6675 29.2593 14.6775 26.0135 12.2709H30.0827C30.1618 12.2709 30.2252 12.2392 30.3043 12.2234Z" fill="#F0B80F"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="back bg-[#F0B80F1A]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                                        <path d="M30.3043 12.2234C30.7635 13.4109 31.9035 14.25 33.2493 14.25C34.991 14.25 36.416 12.825 36.416 11.0834C36.416 9.34171 34.991 7.91671 33.2493 7.91671C31.9035 7.91671 30.7635 8.75587 30.3043 9.94337C30.2252 9.92754 30.1618 9.89587 30.0827 9.89587H23.7493V8.70837C23.7493 7.41004 22.6727 6.33337 21.3743 6.33337H16.6243C15.326 6.33337 14.2493 7.41004 14.2493 8.70837V9.89587H7.91601C7.83684 9.89587 7.77351 9.92754 7.69434 9.94337C7.23517 8.75587 6.09517 7.91671 4.74934 7.91671C3.00767 7.91671 1.58267 9.34171 1.58267 11.0834C1.58267 12.825 3.00767 14.25 4.74934 14.25C6.09517 14.25 7.23517 13.4109 7.69434 12.2234C7.77351 12.2392 7.83684 12.2709 7.91601 12.2709H11.9852C8.73934 14.6775 6.72851 18.6675 6.72851 22.9584C6.72851 23.2275 6.74434 23.4809 6.77601 23.75H6.33267C5.01851 23.75 3.95767 24.8109 3.95767 26.125V29.2917C3.95767 30.6059 5.01851 31.6667 6.33267 31.6667H9.49934C9.84767 31.6667 10.1643 31.5875 10.4652 31.445C11.2885 31.0967 11.8743 30.2575 11.8743 29.2917V26.125C11.8743 24.8109 10.8135 23.75 9.49934 23.75H9.13517C9.13517 23.7025 9.15101 23.655 9.15101 23.6075C9.11934 23.3859 9.11934 23.18 9.11934 22.9584C9.11934 19.0475 11.1302 15.4692 14.281 13.6167C14.3443 14.8359 15.3735 15.8334 16.6243 15.8334H21.3743C22.6252 15.8334 23.6543 14.8359 23.7335 13.6167C26.8843 15.4692 28.8952 19.0634 28.8952 22.9584C28.8952 23.18 28.8793 23.3859 28.8635 23.6075C28.8635 23.655 28.8793 23.7025 28.8793 23.75H28.4993C27.1852 23.75 26.1243 24.8109 26.1243 26.125V29.2917C26.1243 30.2575 26.7102 31.0967 27.5335 31.445C27.8343 31.5875 28.151 31.6667 28.4993 31.6667H31.666C32.9802 31.6667 34.041 30.6059 34.041 29.2917V26.125C34.041 24.8109 32.9802 23.75 31.666 23.75H31.2227C31.2543 23.4809 31.2702 23.2275 31.2702 22.9584C31.2702 18.6675 29.2593 14.6775 26.0135 12.2709H30.0827C30.1618 12.2709 30.2252 12.2392 30.3043 12.2234Z" fill="#F0B80F"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-[22px] leading-[29.7px] font-[700] text-[#000000] satoshi-font mt-[24px]">
+                                                UX Design
+                                            </div>
+                                            <p class="font-normal text-gray-400 font-[700] text-[16px] mt-[24px] leading-[26px]">
+                                                Lorem Ipsum is simply dummy text of the printing and
+                                                typesetting industry Lorem Ipsum has
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-[100%] mb-8 lg:mb-0 px-[10px]">
+                                    <div class="flex justify-center flex-wrap xs:mt-[35px]">
+                                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                            <div class="flipper">
+                                                <div class="front bg-[#3DCD5C1A]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                                        <path d="M33.4868 9.76945C32.8376 9.42112 31.476 9.05695 29.6235 10.3553L27.296 12.0019C27.1218 7.07778 24.9843 5.14612 19.791 5.14612H10.291C4.87597 5.14612 2.77014 7.25195 2.77014 12.6669V25.3336C2.77014 28.9753 4.74931 32.8544 10.291 32.8544H19.791C24.9843 32.8544 27.1218 30.9228 27.296 25.9986L29.6235 27.6453C30.6051 28.3419 31.4601 28.5636 32.141 28.5636C32.7268 28.5636 33.186 28.3894 33.4868 28.2311C34.136 27.8986 35.2285 26.9961 35.2285 24.7319V13.2686C35.2285 11.0045 34.136 10.102 33.4868 9.76945ZM17.416 18.0186C15.7851 18.0186 14.4393 16.6886 14.4393 15.0419C14.4393 13.3953 15.7851 12.0653 17.416 12.0653C19.0468 12.0653 20.3926 13.3953 20.3926 15.0419C20.3926 16.6886 19.0468 18.0186 17.416 18.0186Z" fill="#3DCD5C"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="back bg-[#3DCD5C1A]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                                        <path d="M33.4868 9.76945C32.8376 9.42112 31.476 9.05695 29.6235 10.3553L27.296 12.0019C27.1218 7.07778 24.9843 5.14612 19.791 5.14612H10.291C4.87597 5.14612 2.77014 7.25195 2.77014 12.6669V25.3336C2.77014 28.9753 4.74931 32.8544 10.291 32.8544H19.791C24.9843 32.8544 27.1218 30.9228 27.296 25.9986L29.6235 27.6453C30.6051 28.3419 31.4601 28.5636 32.141 28.5636C32.7268 28.5636 33.186 28.3894 33.4868 28.2311C34.136 27.8986 35.2285 26.9961 35.2285 24.7319V13.2686C35.2285 11.0045 34.136 10.102 33.4868 9.76945ZM17.416 18.0186C15.7851 18.0186 14.4393 16.6886 14.4393 15.0419C14.4393 13.3953 15.7851 12.0653 17.416 12.0653C19.0468 12.0653 20.3926 13.3953 20.3926 15.0419C20.3926 16.6886 19.0468 18.0186 17.416 18.0186Z" fill="#3DCD5C"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-[22px] leading-[29.7px] font-[700] text-[#000000] satoshi-font mt-[24px]">
+                                                Video Production
+                                            </div>
+                                            <p class="font-normal text-gray-400 font-[700] text-[16px] mt-[24px] leading-[26px]">
+                                                Lorem Ipsum is simply dummy text of the printing and
+                                                typesetting industry Lorem Ipsum has
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-[100%] mb-8 lg:mb-0 px-[10px]">
+                                    <div class="flex justify-center flex-wrap xs:mt-[35px]">
+                                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                            <div class="flipper">
+                                                <div class="front bg-[#C13DCD14]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                                        <path d="M25.6349 3.16663H12.3665C6.60319 3.16663 3.16736 6.60246 3.16736 12.3658V25.6183C3.16736 31.3975 6.60319 34.8333 12.3665 34.8333H25.619C31.3824 34.8333 34.8182 31.3975 34.8182 25.6341V12.3658C34.834 6.60246 31.3982 3.16663 25.6349 3.16663ZM12.0815 28.7375C12.0815 29.3866 11.5432 29.925 10.894 29.925C10.2449 29.925 9.70652 29.3866 9.70652 28.7375V25.46C9.70652 24.8108 10.2449 24.2725 10.894 24.2725C11.5432 24.2725 12.0815 24.8108 12.0815 25.46V28.7375ZM20.1882 28.7375C20.1882 29.3866 19.6499 29.925 19.0007 29.925C18.3515 29.925 17.8132 29.3866 17.8132 28.7375V22.1666C17.8132 21.5175 18.3515 20.9791 19.0007 20.9791C19.6499 20.9791 20.1882 21.5175 20.1882 22.1666V28.7375ZM28.2949 28.7375C28.2949 29.3866 27.7565 29.925 27.1074 29.925C26.4582 29.925 25.9199 29.3866 25.9199 28.7375V18.8891C25.9199 18.24 26.4582 17.7016 27.1074 17.7016C27.7565 17.7016 28.2949 18.24 28.2949 18.8891V28.7375ZM28.2949 13.8858C28.2949 14.535 27.7565 15.0733 27.1074 15.0733C26.4582 15.0733 25.9199 14.535 25.9199 13.8858V12.35C21.8824 16.4983 16.8315 19.4275 11.179 20.8366C11.084 20.8683 10.989 20.8683 10.894 20.8683C10.3557 20.8683 9.88069 20.5041 9.73819 19.9658C9.57986 19.3325 9.95986 18.6833 10.609 18.525C15.9449 17.195 20.6949 14.3925 24.4632 10.4341H22.484C21.8349 10.4341 21.2965 9.89579 21.2965 9.24663C21.2965 8.59746 21.8349 8.05913 22.484 8.05913H27.1232C27.1865 8.05913 27.234 8.09079 27.2974 8.09079C27.3765 8.10663 27.4557 8.10663 27.5349 8.13829C27.614 8.16996 27.6774 8.21746 27.7565 8.26496C27.804 8.29663 27.8515 8.31246 27.899 8.34413C27.9149 8.35996 27.9149 8.37579 27.9307 8.37579C27.994 8.43913 28.0415 8.50246 28.089 8.56579C28.1365 8.62913 28.184 8.67663 28.1999 8.73996C28.2315 8.80329 28.2315 8.86663 28.2474 8.94579C28.2632 9.02496 28.2949 9.10413 28.2949 9.19913C28.2949 9.21496 28.3107 9.23079 28.3107 9.24663V13.8858H28.2949Z" fill="#C13DCD"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="back bg-[#C13DCD14]">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                                        <path d="M25.6349 3.16663H12.3665C6.60319 3.16663 3.16736 6.60246 3.16736 12.3658V25.6183C3.16736 31.3975 6.60319 34.8333 12.3665 34.8333H25.619C31.3824 34.8333 34.8182 31.3975 34.8182 25.6341V12.3658C34.834 6.60246 31.3982 3.16663 25.6349 3.16663ZM12.0815 28.7375C12.0815 29.3866 11.5432 29.925 10.894 29.925C10.2449 29.925 9.70652 29.3866 9.70652 28.7375V25.46C9.70652 24.8108 10.2449 24.2725 10.894 24.2725C11.5432 24.2725 12.0815 24.8108 12.0815 25.46V28.7375ZM20.1882 28.7375C20.1882 29.3866 19.6499 29.925 19.0007 29.925C18.3515 29.925 17.8132 29.3866 17.8132 28.7375V22.1666C17.8132 21.5175 18.3515 20.9791 19.0007 20.9791C19.6499 20.9791 20.1882 21.5175 20.1882 22.1666V28.7375ZM28.2949 28.7375C28.2949 29.3866 27.7565 29.925 27.1074 29.925C26.4582 29.925 25.9199 29.3866 25.9199 28.7375V18.8891C25.9199 18.24 26.4582 17.7016 27.1074 17.7016C27.7565 17.7016 28.2949 18.24 28.2949 18.8891V28.7375ZM28.2949 13.8858C28.2949 14.535 27.7565 15.0733 27.1074 15.0733C26.4582 15.0733 25.9199 14.535 25.9199 13.8858V12.35C21.8824 16.4983 16.8315 19.4275 11.179 20.8366C11.084 20.8683 10.989 20.8683 10.894 20.8683C10.3557 20.8683 9.88069 20.5041 9.73819 19.9658C9.57986 19.3325 9.95986 18.6833 10.609 18.525C15.9449 17.195 20.6949 14.3925 24.4632 10.4341H22.484C21.8349 10.4341 21.2965 9.89579 21.2965 9.24663C21.2965 8.59746 21.8349 8.05913 22.484 8.05913H27.1232C27.1865 8.05913 27.234 8.09079 27.2974 8.09079C27.3765 8.10663 27.4557 8.10663 27.5349 8.13829C27.614 8.16996 27.6774 8.21746 27.7565 8.26496C27.804 8.29663 27.8515 8.31246 27.899 8.34413C27.9149 8.35996 27.9149 8.37579 27.9307 8.37579C27.994 8.43913 28.0415 8.50246 28.089 8.56579C28.1365 8.62913 28.184 8.67663 28.1999 8.73996C28.2315 8.80329 28.2315 8.86663 28.2474 8.94579C28.2632 9.02496 28.2949 9.10413 28.2949 9.19913C28.2949 9.21496 28.3107 9.23079 28.3107 9.24663V13.8858H28.2949Z" fill="#C13DCD"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-[22px] leading-[29.7px] font-[700] text-[#000000] satoshi-font mt-[24px]">
+                                                Digital Marketing
+                                            </div>
+                                            <p class="font-normal text-gray-400 font-[700] text-[16px] mt-[24px] leading-[26px]">
+                                                Lorem Ipsum is simply dummy text of the printing and
+                                                typesetting industry Lorem Ipsum has
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- our History -->
+        <div>
+            <section class="w-[100%] h-[100%] flex flex-col items-center justify-center pt-[108px]" id="history">
+                <div class="mb-[60px]">
+                    <h1 class="main-title font-[900] leading-[48.6px] text-[36px] text-center pb-[10px]">
+                        Our History
+                    </h1>
+                    <div class="border-[3px] border-[#F0B80F] rounded-[24px] w-[84px] h-[6px] about-underline"></div>
+                </div>
+
+                <div class="flex" id="historyContent">
+                    <ul class="relative flex flex-col gap-12 py-12 pl-8 before:absolute xs:pl-[1rem] carousel carousel-main">
+                        <li role="article" class="relative pl-4 sm:pl-8" data-year="2000" id="timelineItem0">
+                            <div class="flex flex-col flex-1 gap-4 ">
+                                <h1 class="text-1xl sm:text-3xl text-[#808080] leading-6 yearSlide" id="timeline1">2000</h1>
+                            </div>
+                        </li>
+                        <li role="article" class="relative pl-4 sm:pl-8" data-year="2004" id="timelineItem1">
+                            <div class="flex flex-col flex-1 gap-4">
+                                <h1 class="text-1xl sm:text-3xl text-[#808080] leading-6 yearSlide" id="timeline2">2004</h1>
+                            </div>
+                        </li>
+                        <li role="article" class="relative sm:pl-8">
+                            <div class="flex flex-col flex-1 gap-4 pl-3 sm:px-4 w-28 cursor-pointer">
+                                <img src="../src/assets/arrow-down.png" class="w-9" id="downArrow"/>
+                            </div>
+                        </li>
+                        <li role="article" class="relative pl-1 sm:pl-8" data-year="2008" id="timelineItem2">
+                            <div class="flex flex-col flex-1 gap-4">
+                                <h1 class="text-2xl sm:text-4xl font-bold text-black leading-6 " id="timeline3">2008</h1>
+                            </div>
+                        </li>
+                        <li role="article" class="relative sm:pl-8">
+                            <div class="flex flex-col flex-1 gap-4 pl-3 sm:px-4 cursor-pointer">
+                                <img src="../src/assets/arrow-down (1).png " class="w-9" id="upArrow"/>
+                            </div>
+                        </li>
+                        <li role="article" class="relative pl-4 sm:pl-8" id="year2012">
+                            <div class="flex flex-col flex-1 gap-4">
+                                <h1 class="text-1xl sm:text-3xl text-[#808080] leading-6 yearSlide" id="timeline4">2012</h1>
+                            </div>
+                        </li>
+                        <li role="article" class="relative pl-4 sm:pl-8" id="year2016">
+                            <div class="flex flex-col flex-1 gap-4">
+                                <h1 class="text-1xl sm:text-3xl text-[#808080] leading-6 yearSlide" id="timeline5">2016</h1>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <section class="flex flex-col gap-12 py-12 pl-[7rem] sm:pl-[5rem] xs:hidden">
+                        <div class="range-slider">
+                            <div class="input-range absolute"></div>
+                            <img src="../src/assets/Group 16.svg" class="relative ml-[-13%] mt-[181%] sm:mt-[386%] sm:ml-[-29%]"/>
+                            <span class="range-value px-10 ml-10 sm:px-2"></span>
+                        </div>
+                    </section>
+
+                    <div id="sliderContainer" class="slider carousel-main flickity-carousel">
+                        <div class="slide animate__animated animate__fadeIn mx-0 mr-5 sm:mx-[2rem]" data-index="0">
+                            <img src="../src/assets/Frame 270.png" class="mt-32 w-[422px] h-[200px] md:mr-[-4.75rem] sm:mr-[-4.75rem]"/>
+                            <h1 class="capitalize font-[500] text-2xl satoshi-font py-2">
+                                lorem ipsum doller sit
+                            </h1>
+
+                            <span id="ourhistorytitle" class="text-[#808080] mt-10 satoshi-font leading-6 text-base">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+                              Rhoncus varius mauris curabitur tellus blandit eget lacinia <br/>
+                              consectetur Fames erat tellus.
+                            </span>
+                        </div>
+
+                        <div class="slide animate__animated animate__fadeIn mx-0 mr-5 sm:mx-[2rem] carousel carousel-main">
+                            <img src="../src/assets/Frame 28 (1).png" class="mt-32 w-[422px] h-[200px] md:mr-[-4.75rem] sm:mr-[-4.75rem]"/>
+                            <h1 class="capitalize font-[500] text-2xl satoshi-font py-2">
+                                2lorem ipsum doller sit
+                            </h1>
+
+                            <span id="ourhistorytitle" class="text-[#808080] mt-10 satoshi-font leading-6 text-base">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+                              Rhoncus varius mauris curabitur tellus blandit eget lacinia <br/>
+                              consectetur Fames erat tellus.
+                            </span>
+                        </div>
+                        <div class="slide animate__animated animate__fadeIn mx-0 mr-5 sm:mx-[2rem] carousel carousel-main">
+                            <img src="../src/assets/Frame 28 (2).png" class="mt-32 w-[422px] h-[200px] md:mr-[-4.75rem] sm:mr-[-4.75rem]"/>
+                            <h1 class="capitalize font-[500] text-2xl satoshi-font py-2">
+                                3lorem ipsum doller sit
+                            </h1>
+
+                            <span id="ourhistorytitle" class="text-[#808080] mt-10 satoshi-font leading-6 text-base">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+                              Rhoncus varius mauris curabitur tellus blandit eget lacinia <br/>
+                              consectetur Fames erat tellus.
+                            </span>
+                        </div>
+                        <div class="slide animate__animated animate__fadeIn mx-0 mr-5 sm:mx-[2rem] carousel carousel-main">
+                            <img src="../src/assets/Frame 28 (1).png" class="mt-32 w-[422px] h-[200px] md:mr-[-4.75rem] sm:mr-[-4.75rem]"/>
+                            <h1 class="capitalize font-[500] text-2xl satoshi-font py-2">
+                                4lorem ipsum doller sit
+                            </h1>
+
+                            <span id="ourhistorytitle" class="text-[#808080] mt-10 satoshi-font leading-6 text-base">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+                              Rhoncus varius mauris curabitur tellus blandit eget lacinia <br/>
+                              consectetur Fames erat tellus.
+                            </span>
+                        </div>
+                        <div class="slide animate__animated animate__fadeIn mx-0 mr-5 sm:mx-[2rem] carousel carousel-main">
+                            <img src="../src/assets/Frame 28 (2).png" class="mt-32 w-[422px] h-[200px] md:mr-[-4.75rem] sm:mr-[-4.75rem]"/>
+                            <h1 class="capitalize font-[500] text-2xl satoshi-font py-2">
+                                5lorem ipsum doller sit
+                            </h1>
+
+                            <span id="ourhistorytitle" class="text-[#808080] mt-10 satoshi-font leading-6 text-base">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+                              Rhoncus varius mauris curabitur tellus blandit eget lacinia <br/>
+                              consectetur Fames erat tellus.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- team -->
+        <div>
+            <section class="">
+                <div class="grid max-w-screen-2xl px-4 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-0 pt-[108px]">
+                    <div class="mb-[60px]">
+                        <h1 class="main-title text-center pb-[10px]">
+                            Meet Our Team
+                        </h1>
+                        <div class="border-[3px] border-[#F0B80F] rounded-[24px] w-[84px] h-[6px] about-underline"></div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 flex-wrap lg:justify-between justify-center sm:justify-center lg:flex-row">
+                            <div>
+                                <div class="pt-[30px]">
+                                    <div class= ml-[10px] mr-[10px] text-center">
+                                        <div>
+                                            <img class="mx-auto w-[80%]"
+                                                    src="./assets/image 6.png"/>
+                                        </div>
+                                        <div class="pt-[16px]">
+                                            <div class="text-center">
+                                                <div class="text-[22px] leading-[29.7px] font-[700] text-[#000000] satoshi-font mt-[16px]">
+                                                    Esther Foley
+                                                </div>
+                                                <div class="text-[16px] leading-[21.6px] font-[400] text-[#808080] satoshi-font mt-[18px]">
+                                                    Head of business
+                                                </div>
+
+                                                <div class="flex mt-[16px] space-x-5 justify-center sm:justify-center">
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="w-4 h-4"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                            <path
+                                                                    d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                                                        </svg>
+                                                        <span class="sr-only">Facebook page</span>
+                                                    </a>
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg class="w-4 h-4"
+                                                                aria-hidden="true"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 20 17">
+                                                            <path fill-rule="evenodd"
+                                                                    d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+                                                                    clip-rule="evenodd"/>
+                                                        </svg>
+                                                        <span class="sr-only">Twitter page</span>
+                                                    </a>
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="w-4 h-4"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                            <path
+                                                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                                                            />
+                                                        </svg>
+                                                        <span class="sr-only">GitHub account</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="pt-[30px]">
+                                    <div class= ml-[10px] mr-[10px] text-center">
+                                        <div>
+                                            <img class="mx-auto w-[80%]"
+                                                    src="./assets/image 7.png"
+                                            />
+                                        </div>
+                                        <div class="pt-[16px]">
+                                            <div class="text-center">
+                                                <div class="text-[22px] leading-[29.7px] font-[700] text-[#000000] satoshi-font mt-[16px]">
+                                                    Robert Taylor
+                                                </div>
+                                                <div class="text-[16px] leading-[21.6px] font-[400] text-[#808080] satoshi-font mt-[18px]">
+                                                    Head of marketing
+                                                </div>
+
+                                                <div class="flex mt-[16px] space-x-5 justify-center sm:justify-center">
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="w-4 h-4"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                            <path
+                                                                    d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"
+                                                            />
+                                                        </svg>
+                                                        <span class="sr-only">Facebook page</span>
+                                                    </a>
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg class="w-4 h-4"
+                                                                aria-hidden="true"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 20 17">
+                                                            <path fill-rule="evenodd"
+                                                                    d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+                                                                    clip-rule="evenodd"
+                                                            />
+                                                        </svg>
+                                                        <span class="sr-only">Twitter page</span>
+                                                    </a>
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="w-4 h-4"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                            <path
+                                                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                                                            />
+                                                        </svg>
+                                                        <span class="sr-only">GitHub account</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="pt-[30px]">
+                                    <div class= ml-[10px] mr-[10px] text-center">
+                                        <div>
+                                            <img class="mx-auto w-[80%]"
+                                                    src="./assets/image 8.png"
+                                            />
+                                        </div>
+                                        <div class="pt-[16px]">
+                                            <div class="text-center">
+                                                <div class="text-[22px] leading-[29.7px] font-[700] text-[#000000] satoshi-font mt-[16px]">
+                                                    Justin Watson
+                                                </div>
+                                                <div class="text-[16px] leading-[21.6px] font-[400] text-[#808080] satoshi-font mt-[18px]">
+                                                    Head of designing
+                                                </div>
+                                                <div class="flex mt-[16px] space-x-5 justify-center sm:justify-center">
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="w-4 h-4"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                                                        </svg>
+                                                        <span class="sr-only">Facebook page</span>
+                                                    </a>
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg class="w-4 h-4"
+                                                                aria-hidden="true"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 20 17">
+                                                            <path fill-rule="evenodd"
+                                                                    d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+                                                                    clip-rule="evenodd"/>
+                                                        </svg>
+                                                        <span class="sr-only">Twitter page</span>
+                                                    </a>
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="w-4 h-4"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                                        </svg>
+                                                        <span class="sr-only">GitHub account</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="pt-[30px]">
+                                    <div class="ml-[10px] mr-[10px] text-center 2xl:mt-[0%] xl:mt-[0%]">
+                                        <div>
+                                            <img class="mx-auto w-[80%]"
+                                                    src="./assets/image 9.png"
+                                            />
+                                        </div>
+                                        <div class="pt-[16px]">
+                                            <div class="text-center">
+                                                <div class="text-[22px] leading-[29.7px] font-[700] text-[#000000] satoshi-font mt-[16px]">
+                                                    Lucio Murray
+                                                </div>
+                                                <div class="text-[16px] leading-[21.6px] font-[400] text-[#808080] satoshi-font mt-[18px]">
+                                                    Head of software
+                                                </div>
+                                                <div class="flex mt-[16px] space-x-5 justify-center sm:justify-center">
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            class="w-4 h-4"
+                                                            fill="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                                                        </svg>
+                                                        <span class="sr-only">Facebook page</span>
+                                                    </a>
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg
+                                                            class="w-4 h-4"
+                                                            aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="currentColor"
+                                                            viewBox="0 0 20 17">
+                                                            <path fill-rule="evenodd"
+                                                                    d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+                                                                    clip-rule="evenodd"/>
+                                                        </svg>
+                                                        <span class="sr-only">Twitter page</span>
+                                                    </a>
+                                                    <a href="#" class="text-#0055FF-500 hover:text-#0055FF-900 dark:hover:text-white icon-bag">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            class="w-4 h-4"
+                                                            fill="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                                        </svg>
+                                                        <span class="sr-only">GitHub account</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- What People Say  -->
+        <div class="mx-auto px-[50px] md:px-6 satoshi-font xs:px-[3px] max-w-screen-2xl">
+            <section class="text-center justify-items-center pt-[108px]">
+                <div class="grid justify-items-center mb-[60px]">
+                    <h2 class="main-title  text-3xl font-[900] pb-[10px]">What People Say</h2>
+                    <div class="border-[3px] border-[#F0B80F] rounded-[24px] w-[84px] h-[6px] about-underline"></div>
+                </div>
+                <div class="owl-carousel owl-theme owl-carousel1">
+                    <div class="item mx-5 mb-12 md:mb-0">
+                        <div class="mb-6 mx-auto w-32 satoshi-font">
+                            <img src="./assets/Frame 36.png" class="rounded-full shadow-lg dark:shadow-black/20"/>
+                        </div>
+                        <div class="border-2 mt-[-80px] py-2 px-5 pb-10 rounded-2xl satoshi-font">
+                            <h5 class="mb-2 text-[20px] leading-[27px] font-[700] mt-[68px] satoshi-font">
+                                John David
+                            </h5>
+                            <h6 class="mb-4 text-[#808080] leading-[21.6px] text-[16px] font-[400]">
+                                Head of software
+                            </h6>
+                            <svg
+                                width="41"
+                                height="28"
+                                viewBox="0 0 41 28"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.693 11.9645C13.0914 11.9645 15.0235 12.643 16.4892 14C17.9549 15.357 18.6877 17.26 18.6877 19.7092C18.6877 22.0922 17.8716 24.078 16.2393 25.6667C14.6404 27.2222 12.3419 28 9.34385 28C6.34583 28 4.03068 27.0071 2.39842 25.0213C0.799474 23.0355 0 20.4705 0 17.3262C0 14.3475 0.732851 11.7329 2.19855 9.48227C3.69757 7.19858 5.56301 5.27896 7.79487 3.7234C10.0267 2.16785 12.2419 0.926714 14.4405 0L16.2393 3.7234C14.8069 4.28605 13.3412 5.08037 11.8422 6.10638C10.3765 7.13238 9.14398 8.27423 8.14464 9.53191C7.1453 10.7896 6.62897 12.0307 6.59566 13.2553C6.72891 13.0567 7.16195 12.792 7.89481 12.461C8.62766 12.13 9.56038 11.9645 10.693 11.9645ZM32.9283 11.9645C35.3268 11.9645 37.2588 12.643 38.7245 14C40.1902 15.357 40.9231 17.26 40.9231 19.7092C40.9231 22.0922 40.1069 24.078 38.4747 25.6667C36.8757 27.2222 34.5773 28 31.5792 28C28.5812 28 26.2661 27.0071 24.6338 25.0213C23.0348 23.0355 22.2354 20.4705 22.2354 17.3262C22.2354 14.3475 22.9682 11.7329 24.4339 9.48227C25.9329 7.19858 27.7984 5.27896 30.0302 3.7234C32.2621 2.16785 34.4773 0.926714 36.6759 0L38.4747 3.7234C37.0423 4.28605 35.5766 5.08037 34.0776 6.10638C32.6119 7.13238 31.3794 8.27423 30.38 9.53191C29.3807 10.7896 28.8643 12.0307 28.831 13.2553C28.9643 13.0567 29.3973 12.792 30.1302 12.461C30.863 12.13 31.7957 11.9645 32.9283 11.9645Z"
+                                        fill="#0055FF"
+                                />
+                            </svg>
+                            <p class="mb-4 mt-3 text-left text-[16px] text-[#808080] font-[400] leading-[26px]">
+                                Lorem ipsum dolor sit amet, consecur adipiscing elit. comentum
+                                aliquam tempor tortor hendrerit tincidunt.
+                            </p>
+
+                            <div class="flex mt-8">
+                                <img src="./assets/Facebook.png" class="mr-auto" style="width: 123px!important; height: 24px!important"/>
+
+                                <ul class="mb-0 flex justify-center">
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+                                            />
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item mx-5 mb-12 md:mb-0">
+                        <div class="mb-6 mx-auto w-32">
+                            <img src="./assets/Frame 37.png" class="rounded-full shadow-lg dark:shadow-black/20"/>
+                        </div>
+                        <div class="border-2 mt-[-80px] py-2 px-5 pb-10 rounded-2xl">
+                            <h5 class="mb-2 text-[20px] leading-[27px] font-[700] mt-[68px] satoshi-font">
+                                Sara Kellay
+                            </h5>
+                            <h6 class="mb-4 text-[#808080] leading-[21.6px] text-[16px] font-[400]">
+                                Head of designing
+                            </h6>
+                            <svg
+                                width="41"
+                                height="28"
+                                viewBox="0 0 41 28"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.693 11.9645C13.0914 11.9645 15.0235 12.643 16.4892 14C17.9549 15.357 18.6877 17.26 18.6877 19.7092C18.6877 22.0922 17.8716 24.078 16.2393 25.6667C14.6404 27.2222 12.3419 28 9.34385 28C6.34583 28 4.03068 27.0071 2.39842 25.0213C0.799474 23.0355 0 20.4705 0 17.3262C0 14.3475 0.732851 11.7329 2.19855 9.48227C3.69757 7.19858 5.56301 5.27896 7.79487 3.7234C10.0267 2.16785 12.2419 0.926714 14.4405 0L16.2393 3.7234C14.8069 4.28605 13.3412 5.08037 11.8422 6.10638C10.3765 7.13238 9.14398 8.27423 8.14464 9.53191C7.1453 10.7896 6.62897 12.0307 6.59566 13.2553C6.72891 13.0567 7.16195 12.792 7.89481 12.461C8.62766 12.13 9.56038 11.9645 10.693 11.9645ZM32.9283 11.9645C35.3268 11.9645 37.2588 12.643 38.7245 14C40.1902 15.357 40.9231 17.26 40.9231 19.7092C40.9231 22.0922 40.1069 24.078 38.4747 25.6667C36.8757 27.2222 34.5773 28 31.5792 28C28.5812 28 26.2661 27.0071 24.6338 25.0213C23.0348 23.0355 22.2354 20.4705 22.2354 17.3262C22.2354 14.3475 22.9682 11.7329 24.4339 9.48227C25.9329 7.19858 27.7984 5.27896 30.0302 3.7234C32.2621 2.16785 34.4773 0.926714 36.6759 0L38.4747 3.7234C37.0423 4.28605 35.5766 5.08037 34.0776 6.10638C32.6119 7.13238 31.3794 8.27423 30.38 9.53191C29.3807 10.7896 28.8643 12.0307 28.831 13.2553C28.9643 13.0567 29.3973 12.792 30.1302 12.461C30.863 12.13 31.7957 11.9645 32.9283 11.9645Z"
+                                    fill="#0055FF"/>
+                            </svg>
+                            <p class="mb-4 mt-3 text-left text-[16px] text-[#808080] font-[400] leading-[26px]">
+                                Lorem ipsum dolor sit amet, consecur adipiscing elit. comentum
+                                aliquam tempor tortor hendrerit tincidunt.
+                            </p>
+
+                            <div class="flex mt-8">
+                                <img src="./assets/Google.png" class="mr-auto" style="width: 73px!important; height: 24px!important"/>
+
+                                <ul class="mb-0 flex justify-center">
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path
+                                                fill="#F8BC18"
+                                                d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item mx-5 mb-12 md:mb-0">
+                        <div class="mb-6 mx-auto w-32">
+                            <img src="./assets/Frame 37 (1).png" class="rounded-full shadow-lg dark:shadow-black/20"/>
+                        </div>
+                        <div class="border-2 mt-[-80px] py-2 px-5 pb-10 rounded-2xl">
+                            <h5 class="mb-2 text-[20px] leading-[27px] font-[700] mt-[68px] satoshi-font">
+                                David Martins
+                            </h5>
+                            <h6 class="mb-4 text-[#808080] leading-[21.6px] text-[16px] font-[400]">
+                                Head of marketing
+                            </h6>
+                            <svg
+                                width="41"
+                                height="28"
+                                viewBox="0 0 41 28"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.693 11.9645C13.0914 11.9645 15.0235 12.643 16.4892 14C17.9549 15.357 18.6877 17.26 18.6877 19.7092C18.6877 22.0922 17.8716 24.078 16.2393 25.6667C14.6404 27.2222 12.3419 28 9.34385 28C6.34583 28 4.03068 27.0071 2.39842 25.0213C0.799474 23.0355 0 20.4705 0 17.3262C0 14.3475 0.732851 11.7329 2.19855 9.48227C3.69757 7.19858 5.56301 5.27896 7.79487 3.7234C10.0267 2.16785 12.2419 0.926714 14.4405 0L16.2393 3.7234C14.8069 4.28605 13.3412 5.08037 11.8422 6.10638C10.3765 7.13238 9.14398 8.27423 8.14464 9.53191C7.1453 10.7896 6.62897 12.0307 6.59566 13.2553C6.72891 13.0567 7.16195 12.792 7.89481 12.461C8.62766 12.13 9.56038 11.9645 10.693 11.9645ZM32.9283 11.9645C35.3268 11.9645 37.2588 12.643 38.7245 14C40.1902 15.357 40.9231 17.26 40.9231 19.7092C40.9231 22.0922 40.1069 24.078 38.4747 25.6667C36.8757 27.2222 34.5773 28 31.5792 28C28.5812 28 26.2661 27.0071 24.6338 25.0213C23.0348 23.0355 22.2354 20.4705 22.2354 17.3262C22.2354 14.3475 22.9682 11.7329 24.4339 9.48227C25.9329 7.19858 27.7984 5.27896 30.0302 3.7234C32.2621 2.16785 34.4773 0.926714 36.6759 0L38.4747 3.7234C37.0423 4.28605 35.5766 5.08037 34.0776 6.10638C32.6119 7.13238 31.3794 8.27423 30.38 9.53191C29.3807 10.7896 28.8643 12.0307 28.831 13.2553C28.9643 13.0567 29.3973 12.792 30.1302 12.461C30.863 12.13 31.7957 11.9645 32.9283 11.9645Z"
+                                        fill="#0055FF"/>
+                            </svg>
+                            <p class="mb-4 mt-3 text-left text-[16px] text-[#808080] font-[400] leading-[26px]">
+                                Lorem ipsum dolor sit amet, consecur adipiscing elit. comentum
+                                aliquam tempor tortor hendrerit tincidunt.
+                            </p>
+
+                            <div class="flex mt-8">
+                                <img src="./assets/Amazon.png" class="mr-auto" style="width: 80px!important; height: 24px!important"/>
+
+                                <ul class="mb-0 flex justify-center">
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 96 960 960"
+                                            class="w-5 text-warning">
+                                            <path fill="#F8BC18" d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- blog -->
+        <div id="">
+            <section class="w-[100%] h-[100%] pt-[108px]" id="blog">
+                <div class="grid max-w-screen-2xl px-4 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-0 ">
+                    <div class="grid justify-items-center mb-[60px]">
+                        <h1 class="main-title text-center pb-[10px]">
+                            Our Blog
+                        </h1>
+                        <div class="border-[3px] border-[#F0B80F] rounded-[24px] w-[84px] h-[6px] about-underline"></div>
+                    </div>
+                    <div class="owl-carousel owl-theme owl-carousel2 overflow-hidden flex justify-between flex-wrap w-full h-full lg:flex-row">
+                            <div class="item w-full p-4 md:px-[50px] 2xl:px-[10px]">
+                                <div class="">
+                                    <div class="w-full">
+                                        <div>
+                                            <img
+                                                width="852"
+                                                height="700"
+                                                src="./assets/Frame 28.png"
+                                            />
+                                        </div>
+                                        <div class="pt-[16px] flex justify-between items-center mb-13">
+                                            <h1 class="font-medium p-5 rounded-md text-zinc-400 text-sm/[12px] bg-[#F5F5F5] h-[32px] leading-[16.2px] flex justify-center items-center satoshi-font">
+                                                Business Growth
+                                            </h1>
+                                            <div>
+                                                <div class="font-medium satoshi-font text-[16px]">3 Min read</div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-lg leading-loose mt-[20px] satoshi-font">
+                                                Lorem ipsum dolor sit amet lorem sit onsectetur ipsum.
+                                            </div>
+                                            <div class="font-medium text-base text-zinc-400 mt-[5px] satoshi-font">
+                                                November 21 2022
+                                            </div>
+                                        </div>
+                                        <div class="mt-5 border mb-5"></div>
+                                        <div>
+                                            <div class="font-normal mb-2 text-base text-zinc-400 leading-loose satoshi-font">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Est parturient orci ut a integer ullamcorper ultricies
+                                                Et egestas.
+                                            </div>
+                                            <a href="#" class="text-blue-600 font-medium text-base satoshi-font">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item w-full p-4 md:px-[50px] 2xl:px-[10px]">
+                                <div>
+                                    <div class="w-full">
+                                        <div>
+                                            <img
+                                                width="852"
+                                                height="700"
+                                                src="./assets/Frame 28 (1).png"
+                                            />
+                                        </div>
+                                        <div class="pt-[16px] flex justify-between items-center mb-13">
+                                            <h1 class="font-medium p-5 rounded-md text-zinc-400 text-sm/[12px] bg-[#F5F5F5] h-[32px] leading-[16.2px] flex justify-center items-center satoshi-font">
+                                                Digital Marketing
+                                            </h1>
+                                            <div>
+                                                <div class="font-medium satoshi-font text-[16px]">20 Min read</div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-lg leading-loose mt-[20px] satoshi-font">
+                                                Lorem ipsum dolor sit amet lorem sit onsectetur ipsum.
+                                            </div>
+                                            <div class="font-medium text-base text-zinc-400 mt-[5px] satoshi-font">
+                                                September 16 2022
+                                            </div>
+                                        </div>
+                                        <div class="mt-5 border mb-5"></div>
+                                        <div>
+                                            <div class="font-normal mb-2 text-base text-zinc-400 leading-loose satoshi-font">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Est parturient orci ut a integer ullamcorper ultricies
+                                                Et egestas.
+                                            </div>
+                                            <a href="#" class="text-blue-600 font-medium text-base satoshi-font">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item w-full p-4 2xl:px-[10px] md:px-[50px]">
+                                <div>
+                                    <div class="w-full">
+                                        <div>
+                                            <img
+                                                width="852"
+                                                height="700"
+                                                src="./assets/Frame 28 (2).png"
+                                            />
+                                        </div>
+                                        <div class="pt-[16px] flex justify-between items-center mb-13">
+                                            <h1 class="font-medium p-5 rounded-md text-zinc-400 text-sm/[12px] bg-[#F5F5F5] h-[32px] leading-[16.2px] flex justify-center items-center satoshi-font">
+                                                Business Marketing
+                                            </h1>
+                                            <div>
+                                                <div class="font-medium satoshi-font text-[16px]">30 Min read</div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-lg leading-loose mt-[20px] satoshi-font">
+                                                Lorem ipsum dolor sit amet lorem sit onsectetur ipsum.
+                                            </div>
+                                            <div class="font-medium text-base text-zinc-400 mt-[5px] satoshi-font">
+                                                October 16 2022
+                                            </div>
+                                        </div>
+                                        <div class="mt-5 border mb-5"></div>
+                                        <div>
+                                            <div class="font-normal mb-2 text-base text-zinc-400 leading-loose satoshi-font">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Est parturient orci ut a integer ullamcorper ultricies
+                                                Et egestas.
+                                            </div>
+                                            <a href="#" class="text-blue-600 font-medium text-base satoshi-font">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Our FAQs  -->
+        <div id="faqs">
+            <section class="w-[100%] pt-[108px]">
+                <div class="grid max-w-screen-xl px-4 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-0 justify-items-center ">
+                    <div class="mb-[60px]">
+                        <h1 class="main-title text-center pb-[10px]">
+                            Our FAQs
+                        </h1>
+                        <div class="border-[3px] border-[#F0B80F] rounded-[24px] w-[84px] h-[6px] about-underline"></div>
+                    </div>
+                    <div class="accordion">
+                            <div class="accordion-item">
+                                <div id="myHeading" class="accordion-item-header leading-[27px] font-[500] satoshi-font active">
+                                    <div id="changeColorBtn" class="xs:text-[16px] md:text-[20px]">
+                                        Lorem ipsum dolor sit amet consectetur lorem doller sit?
+                                    </div>
+                                </div>
+                                <div class="accordion-item-body" style="max-height: fit-content">
+                                    <div class="accordion-item-body-content xs:text-[14px] md:text-[16px] leading-[24px] font-[400] text-[#808080] satoshi-font">
+                                        Lorem Ipsum is simply dummy text of the printing and
+                                        typesetting industry. Lorem Ipsum has been the industry's
+                                        standard dummy text ever since the 1500s,
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-item-header  xs:text-[16px] md:text-[20px] leading-[27px] font-[500] satoshi-font">
+                                    Lorem ipsum dolor sit amet consectetur lorem doller sit?
+                                </div>
+                                <div class="accordion-item-body">
+                                    <div class="accordion-item-body-content xs:text-[14px] md:text-[16px] leading-[24px] font-[400] text-[#808080] satoshi-font">
+                                        HTML, aka HyperText Markup Language, is the dominant markup
+                                        language for creating websites and anything that can be
+                                        viewed in a web browser.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-item-header  xs:text-[16px] md:text-[20px] leading-[27px] font-[500] satoshi-font">
+                                    Contrary to popular belief, Lorem Ipsum is not simply random text?
+                                </div>
+                                <div class="accordion-item-body">
+                                    <div class="accordion-item-body-content xs:text-[14px] md:text-[16px] leading-[24px] font-[400] text-[#808080] satoshi-font">
+                                        HTML, aka HyperText Markup Language, is the dominant markup
+                                        language for creating websites and anything that can be
+                                        viewed in a web browser.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-item-header  xs:text-[16px] md:text-[20px] leading-[27px] font-[500] satoshi-font">
+                                    It is a long established fact that a reader will be distracted eadable?
+                                </div>
+                                <div class="accordion-item-body">
+                                    <div class="accordion-item-body-content xs:text-[14px] md:text-[16px] leading-[24px] font-[400] text-[#808080] satoshi-font">
+                                        HTML, aka HyperText Markup Language, is the dominant markup
+                                        language for creating websites and anything that can be
+                                        viewed in a web browser.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-item-header  xs:text-[16px] md:text-[20px] leading-[27px] font-[500] satoshi-font">
+                                    Lorem ipsum dolor sit amet?
+                                </div>
+                                <div class="accordion-item-body">
+                                    <div class="accordion-item-body-content xs:text-[14px] md:text-[16px] leading-[24px] font-[400] text-[#808080] satoshi-font">
+                                        HTML, aka HyperText Markup Language, is the dominant markup
+                                        language for creating websites and anything that can be
+                                        viewed in a web browser.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                            <div class="accordion-item-header  xs:text-[16px] md:text-[20px] leading-[27px] font-[500] satoshi-font">
+                                Lorem ipsum dolor sit amet consectetur lorem doller sit?
+                            </div>
+                            <div class="accordion-item-body">
+                                <div class="accordion-item-body-content xs:text-[14px] md:text-[16px] leading-[24px] font-[400] text-[#808080] satoshi-font">
+                                    HTML, aka HyperText Markup Language, is the dominant markup
+                                    language for creating websites and anything that can be
+                                    viewed in a web browser.
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Get in Touch  -->
+        <div>
+            <section class="mt-[108px]">
+                <div class="lg:flex items-center justify-center xl:p-0 w-[100%]">
+                    <div class="lg:flex pl-[2%] w-[100%] 2xl:pl-[10%]">
+                        <img class="" src="assets/Map.png"/>
+                    </div>
+                    <div class="p-6 sm:p-8 lg:p-16 space-y-8 w-[100%] bg-[#FAFAFC]">
+                        <div>
+                            <h1 class="main-title pb-[10px]">
+                                Get in Touch
+                            </h1>
+                            <div class="border-[3px] border-[#F0B80F] rounded-[24px] w-[84px] h-[6px]"></div>
+                        </div>
+                        <p class="text-[20px] leading-[26px] font-[400] text-[#808080] satoshi-font">
+                            Have a question or just want to say hi? Weid love to <br/>hear from you.
+                        </p>
+                        <form class="mt-8" action="#">
+                        <div class="grid md:grid-cols-2 md:gap-6">
+                            <div class="relative z-0 mb-6 w-full group">
+                                <label for="first_name"
+                                       class="satoshi-font peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                                >
+                                    First name
+                                </label>
+                                <input
+                                    type="text"
+                                    name="floating_first_name"
+                                    id="first_name"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required placeholder="First name"
+                                />
+
+                            </div>
+                            <div class="relative z-0 mb-6 w-full group">
+                                <input
+                                    type="text"
+                                    name="floating_last_name"
+                                    id="floating_last_name"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required placeholder="Last name"
+                                />
+                                <label for="floating_last_name"
+                                       class="satoshi-font peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Last name
+                                </label>
+                            </div>
+                        </div>
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input
+                                type="email"
+                                name="floating_email"
+                                id="floating_email"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                required placeholder="Email address"
+                            />
+                            <label for="floating_email"
+                                    class="satoshi-font peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Email address
+                            </label>
+                        </div>
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input
+                                type="text"
+                                name="floating_password"
+                                id="floating_password"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                required placeholder="message"
+                            />
+                            <label for="floating_password"
+                                    class="sa peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Message
+                            </label>
+                        </div>
+                        <div class="text-center">
+                            <button type="button"
+                                    class="satoshi-font text-white font-[700] leading-[21.6px] mt-8 text-[16px] w-[134px] h-[54px] bg-blue-600 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full px-5 py-2.5 text-center mb-6 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Submit Now
+                            </button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- footer -->
+        <div>
+            <footer class="bg-white dark:bg-gray-900 mt-[108px] mb-[20px] lg:mb-[60px]">
+                <div class="w-full max-w-screen-2xl mx-auto p-5 md:py">
+                    <div class="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-8 text-center sm:text-left">
+                        <div>
+                            <a href="" class="flex items-center justify-center sm:justify-start">
+                                <img src="assets/Group.png" class="h-[48px] w-[41.57px] mr-[0.5rem]"/>
+                                <span class="text-2xl font-bold">DIGITO</span>
+                            </a>
+                            <div>
+                                <ul class="items-center text-center sm:text-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400 mt-6 text-gray-500 dark:text-gray-400 font-medium inline-font">
+                                    <li class="mb-4 text-left text-center sm:text-left">
+                                        <a href="" class="satoshi-font font-medium text-[16px] leading-[21.6px]" style="color: #1C1C1C">Call - <span style="color: #808080">(123) 45678910</span></a>
+                                    </li>
+                                    <li class="mb-4 text-left text-center sm:text-left">
+                                        <a href="" class="satoshi-font font-medium text-[16px] leading-[21.6px]" style="color: #1C1C1C">Mail - <span style="color: #808080">info@digito.com</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="">
+                            <h1 class="text-2xl font-bold satoshi-font" style="color: #1C1C1C">
+                                Useful Links
+                            </h1>
+                            <ul class="mt-4 space-y-4">
+                                <li class="mb-4">
+                                    <a href="" class="hover:underline satoshi-font" style="color: #808080">Home</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="" class="hover:underline satoshi-font" style="color: #808080">About Us</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="" class="hover:underline satoshi-font" style="color: #808080">Services</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="" class="hover:underline satoshi-font" style="color: #808080">History</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold satoshi-font" style="color: #1C1C1C">
+                                Useful Links
+                            </h2>
+                            <ul class="mt-4 space-y-4">
+                                <li class="mb-4">
+                                    <a href="" class="hover:underline satoshi-font" style="color: #808080">Blogs</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="" class="hover:underline satoshi-font" style="color: #808080">Testimonials</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="" class="hover:underline satoshi-font" style="color: #808080">FAOs</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="" class="hover:underline satoshi-font" style="color: #808080">Team</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold satoshi-font" style="color: #1C1C1C">
+                                Subscribe to our Newsletter
+                            </h2>
+                            <div class="relative z-0 w-full mb-6 group mt-4">
+                                <input
+                                    type="text"
+                                    name="floating_first_name"
+                                    id="floating_first_name"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder="Enter your email "
+                                    required
+                                />
+                                <label for="floating_first_name"
+                                       style="color: #808080"
+                                        class="satoshi-font peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 inline-font">
+                                    Enter your email
+                                </label>
+                            </div>
+                            <button type="button"
+                                    class="satoshi-font text-white text-sm font-medium w-full h-12 bg-blue-600 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 rounded-full px-4 text-center">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
+                    <span class="block text-sm text-gray-500 sm:text-center max-sm:text-center dark:text-gray-400 xs:text-center">
+                        © 2023 <a href="#" class="hover:underline">DIGITO</a> All RightsReserved.
+                    </span>
+                </div>
+            </footer>
+        </div>
+
+        <script>
+            const accordionItemHeaders = document.querySelectorAll(
+                ".accordion-item-header"
+            );
+            accordionItemHeaders.forEach((accordionItemHeader) => {
+                accordionItemHeader.addEventListener("click", (event) => {
+                    const currentlyActiveAccordionItemHeader = document.querySelector(
+                        ".accordion-item-header.active"
+                    );
+                    if (
+                        currentlyActiveAccordionItemHeader &&
+                        currentlyActiveAccordionItemHeader !== accordionItemHeader
+                    ) {
+                        currentlyActiveAccordionItemHeader.classList.toggle("active");
+                        currentlyActiveAccordionItemHeader.nextElementSibling.style.maxHeight = 0;
+                    }
+                    accordionItemHeader.classList.toggle("active");
+                    const accordionItemBody = accordionItemHeader.nextElementSibling;
+                    if (accordionItemHeader.classList.contains("active")) {
+                        accordionItemBody.style.maxHeight =
+                            accordionItemBody.scrollHeight + "px";
+                    } else {
+                        accordionItemBody.style.maxHeight = 0;
+                    }
+                });
+            });
+        </script>
+
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        screens: {
+                            sm: "640px",
+                            xs: {min: "320px", max: "639px"},
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <script type="text/javascript">
+            $("ul.navbar-ul.nav-tabs").on('click', 'li', function () {
+                $(this).siblings().removeClass('activeUl');
+                $(this).addClass('activeUl');
+                $(this).siblings().find('a').removeClass('text-blue-700 md:hover:text-blue-500 dark:hover:text-blue-500');
+                $(this).find('a').addClass('text-blue-700 md:hover:text-blue-500 dark:hover:text-blue-500');
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                var years = [2000, 2004, 2008, 2012, 2016];
+                console.log('years', years)
+                var currentIndex = 0;
+                var totalSlides = $(".slide").length;
+
+                function showSlide(index) {
+                    $(".slide").hide();
+                    $(".yearSlide").show();
+                    $(".slide").eq(index).show();
+                }
+
+                function updateYear(index) {
+
+                    var year = years[index];
+                    if (index) {
+                        years.push(years[0])
+                        years.shift()
+                        console.log('years', years)
+                    } else {
+
+                        years.unshift(years[4])
+                        years.pop()
+
+                    }
+                    $("#timeline1").text(years[0]);
+                    $("#timeline2").text(years[1]);
+                    $("#timeline3").text(years[2]);
+                    $("#timeline4").text(years[3]);
+                    $("#timeline5").text(years[4]);
+                }
+
+                $("#downArrow").click(function () {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateYear(0);
+                    showSlide(currentIndex);
+                });
+
+                $("#upArrow").click(function () {
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    updateYear(+1);
+                    showSlide(currentIndex);
+                });
+
+                showSlide(currentIndex);
+
+            });
+        </script>
+
+        <script>
+            $('.owl-carousel1').owlCarousel({
+                items: 1,
+                loop:true,
+                nav:false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                dots: false,
+                responsive:{
+                    767:{
+                        items:2,
+                    },
+                    992:{
+                        autoplay: false,
+                        mouseDrag: false,
+                        items:2
+                    },
+                    1199:{
+                        autoplay: false,
+                        mouseDrag: false,
+                        loop: false,
+                        items:3
+                    },
+                }
+            });
+        </script>
+
+    <script>
+        $('.owl-carousel2').owlCarousel({
+            items: 1,
+            loop:true,
+            nav:false,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            dots: false,
+            responsive:{
+                767:{
+                    items: 2,
+                },
+                992:{
+                    autoplay: false,
+                    mouseDrag: false,
+                    items: 2
+                },
+                1199:{
+                    autoplay: false,
+                    mouseDrag: false,
+                    loop: false,
+                    items:3
+                },
+            }
+        });
+    </script>
+
+    </body>
+</html>
+
+
